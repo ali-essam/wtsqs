@@ -1,0 +1,20 @@
+{
+  "name": "wtsqs",
+  "version": "1.0.0",
+  "description": "AWS SQS Worker Wrapper",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard -v"
+  },
+  "repository": "https://github.com/ali-essam/wtsqs.git",
+  "author": "Ali Essam <ali.essam.arafa@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "aws-sdk": "^2.187.0",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  }
+}
