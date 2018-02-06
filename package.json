@@ -2,9 +2,10 @@
   "name": "wtsqs",
   "version": "1.0.0",
   "description": "AWS SQS Worker Wrapper",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "lint": "standard -v"
+    "lint": "standard -v",
+    "docs": "jsdoc2md -t jsdoc-template.md --separators --param-list-format list lib/wtsqs.js lib/worker.js > README.md"
   },
   "repository": "https://github.com/ali-essam/wtsqs.git",
   "author": "Ali Essam <ali.essam.arafa@gmail.com>",
@@ -12,9 +13,11 @@
   "private": false,
   "dependencies": {
     "aws-sdk": "^2.187.0",
+    "safe-json-stringify": "^1.0.4",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "jsdoc-to-markdown": "^4.0.1",
     "standard": "^10.0.3"
   }
 }
