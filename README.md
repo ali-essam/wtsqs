@@ -68,6 +68,8 @@ Constructs WTSQS object.
 
 **Example**  
 ```js
+const { WTSQS } = require('wtsqs')
+
 // The most simple way to construct a WTSQS object
 const wtsqs = new WTSQS({
   url: '//queue-url',
@@ -351,6 +353,8 @@ Constructs WTSQSWorker object.
 
 **Example**  
 ```js
+const { WTSQS, WTSQSWorker } = require('wtsqs')
+
 const wtsqs = new WTSQS({
   url: '//queue-url',
   accessKeyId: 'AWS_ACCESS_KEY_ID',
