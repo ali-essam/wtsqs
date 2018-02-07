@@ -5,12 +5,25 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "standard -v",
-    "docs": "jsdoc2md -t jsdoc-template.md --separators --param-list-format list lib/wtsqs.js lib/worker.js > README.md"
+    "docs": "jsdoc2md -t jsdoc-template.md --separators lib/wtsqs.js lib/worker.js > README.md"
+  },
+  "engines": {
+    "node": ">=7.0.0"
   },
   "repository": "https://github.com/ali-essam/wtsqs.git",
   "author": "Ali Essam <ali.essam.arafa@gmail.com>",
   "license": "MIT",
   "private": false,
+  "keywords": [
+    "aws",
+    "sqs",
+    "worker",
+    "wrapper",
+    "job",
+    "queue",
+    "javascript",
+    "js"
+  ],
   "dependencies": {
     "aws-sdk": "^2.187.0",
     "safe-json-stringify": "^1.0.4",
