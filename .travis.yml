@@ -2,6 +2,10 @@ language: node_js
 node_js:
 - '8'
 cache: yarn
+script:
+  - yarn run lint
+  - yarn test
+after_success: 'yarn run coveralls'
 env:
   global:
   - secure: zswoHeVl0GxRIZ0G65wYu7opzlG1z75B1NUSGp9iRHgj9jWrzzRT40zflj1v6bCUr1KGP/4Ho7EKfeiA2lZqDITRhFUwHO5tWDVO9lb2oJm9DarKD0BH7aFFozANMM1/+ZM4paUZzlcZdhZ+xgm9m9ErtG6Z3DTlKQ20TW01Q+SS/1Bg3aKjr/mnlf68ffQ1gzBo6R1FknkMNMYyxwTjE7otss9Z+jAwfve0T1XUFfRP0w8+AfL6sASlBtDYhsqR8hTAV3luXWcsBFWqAAV8TSTgfJTF/f2mOzUOLqPdSaxwvlsXZhztWchF77c4zGZQLARcCd1tZR3DxemIOywJmfxQffKwmKacMeWK8yXJCvJ7WFl8362hUTq7UGx5ZLEy1PAdcQypqa3nZMkgXAe3+xCMC3ZHSe+Kwl0qIYXMOVYrKduBkPonvvsTo4Yyv9RJiKypl1oyCYD5CgOYPGF4+Ya0PuiBrIK7lDkcv2awDGZAAQUUO6XYCtljRjXs6Tt9O5//Nuvya2AhzPB/1uMOWEATXEaTNPUSvyJuSy55H4llrYDtfiPgSQmdClSp3+aHS84TpWb6JOipdGTjH3cYjn3uyxS0nTMmtqqGWJOuKT4GCnvhsFlX7BjZwJc3NqStTxaNoTWvagEH82ZmLt631v6Te1hFIsC/M8/cL9vh2Kg=

@@ -1,2 +1,2 @@
---timeout 8000
+--timeout 10000
 --retries 3
