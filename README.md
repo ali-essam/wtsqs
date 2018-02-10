@@ -375,6 +375,7 @@ WTSQSWorker takes care of asynchronously fetching jobs from sqs while processing
     * [new WTSQSWorker(options)](#new_WTSQSWorker_new)
     * _instance_
         * [.run(handler)](#WTSQSWorker+run)
+        * [.shutdown()](#WTSQSWorker+shutdown) ⇒ <code>Promise</code>
     * _inner_
         * [~runHandler](#WTSQSWorker..runHandler) ⇒ <code>Promise</code>
 
@@ -394,7 +395,7 @@ Constructs WTSQSWorker object.
 | [options.maxConcurrency] | <code>Integer</code> | <code>20</code> | Maximum number of concurrent jobs. |
 | [options.pollWaitTime] | <code>Integer</code> | <code>5</code> | Duration (in seconds) for which read calls wait for a job to arrive in the queue before returning. |
 | [options.visibilityTimeout] | <code>Integer</code> | <code>30</code> | Duration (in seconds) that the received jobs are hidden from subsequent retrieve requests. |
-| [options.logger] | <code>Object</code> \| <code>String</code> | <code></code> | Object with trace, debug, info, warn, error methods to use for logging. Or a string with log level to use default internal logger. |
+| [options.logger] | <code>Object</code> \| <code>String</code> | <code></code> | Object with debug, info, warn, error methods to use for logging. Or a string with log level to use default internal logger. |
 
 **Example**  
 ```js
@@ -427,6 +428,16 @@ Start fetching and processing jobs.
 | --- | --- | --- |
 | handler | [<code>runHandler</code>](#WTSQSWorker..runHandler) | Async function to process a single job. |
 
+
+* * *
+
+<a name="WTSQSWorker+shutdown"></a>
+
+### worker.shutdown() ⇒ <code>Promise</code>
+Shutsdown the worker and drain active jobs.
+
+**Kind**: instance method of [<code>WTSQSWorker</code>](#WTSQSWorker)  
+**Returns**: <code>Promise</code> - Resolves when all active jobs have been drained.  
 
 * * *
 

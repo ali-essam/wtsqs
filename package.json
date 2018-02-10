@@ -1,12 +1,13 @@
 {
   "name": "wtsqs",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "AWS SQS Worker Wrapper",
   "main": "lib/index.js",
   "scripts": {
     "lint": "standard -v",
     "test": "nyc --reporter=text-summary mocha",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "cover:report": "nyc report --reporter=html && opn ./coverage/index.html",
     "docs": "jsdoc2md -t jsdoc-template.md --separators lib/wtsqs.js lib/worker.js > README.md"
   },
   "engines": {
