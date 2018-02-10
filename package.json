@@ -1,10 +1,12 @@
 {
   "name": "wtsqs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "AWS SQS Worker Wrapper",
   "main": "lib/index.js",
   "scripts": {
     "lint": "standard -v",
+    "test": "nyc --reporter=text-summary mocha",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "docs": "jsdoc2md -t jsdoc-template.md --separators lib/wtsqs.js lib/worker.js > README.md"
   },
   "engines": {
@@ -30,7 +32,19 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "dirty-chai": "^2.0.1",
     "jsdoc-to-markdown": "^4.0.1",
+    "mocha": "^5.0.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^11.4.1",
+    "sleep-promise": "^2.0.0",
     "standard": "^10.0.3"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
   }
 }

@@ -1,8 +1,13 @@
 # WTSQS
 
-[![npm version](https://badge.fury.io/js/wtsqs.svg)](https://badge.fury.io/js/wtsqs)
+[![npm version](https://badge.fury.io/js/wtsqs.svg)](https://www.npmjs.com/package/wtsqs)
+[![Build Status](https://travis-ci.org/ali-essam/wtsqs.svg?branch=master)](https://travis-ci.org/ali-essam/wtsqs)
+[![Coverage Status](https://coveralls.io/repos/github/ali-essam/wtsqs/badge.svg)](https://coveralls.io/github/ali-essam/wtsqs)
+[![Dependencies](https://david-dm.org/ali-essam/wtsqs/status.svg)](https://david-dm.org/ali-essam/wtsqs)
+[![Dev Dependencies](https://david-dm.org/ali-essam/wtsqs/dev-status.svg)](https://david-dm.org/ali-essam/wtsqs?type=dev)
 
 Simplified SQS Wrapper and Async Worker manager.
+
 
 Features:
 - Simple interface. :white_check_mark:
@@ -60,6 +65,7 @@ A simplified sqs wrapper with interface similar to a normal queue data structure
     * [.peekMany([maxNumberOfMessages], [options], [sqsOptions])](#WTSQS+peekMany) ⇒ <code>Promise.&lt;Array.&lt;Message&gt;&gt;</code>
     * [.deleteOne(message)](#WTSQS+deleteOne) ⇒ <code>Promise</code>
     * [.deleteMany(messages)](#WTSQS+deleteMany) ⇒ <code>Promise</code>
+    * [.deleteAll()](#WTSQS+deleteAll) ⇒ <code>Promise</code>
     * [.popOne([options], [sqsOptions])](#WTSQS+popOne) ⇒ <code>Promise.&lt;(Message\|null)&gt;</code>
     * [.popMany([maxNumberOfMessages], [options], [sqsOptions])](#WTSQS+popMany) ⇒ <code>Promise.&lt;Array.&lt;Message&gt;&gt;</code>
 
@@ -118,6 +124,7 @@ console.log(size) // output: 2
 Enqueue single payload in the queue.
 
 **Kind**: instance method of [<code>WTSQS</code>](#WTSQS)  
+**See**: [SQS#sendMessage](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#sendMessage-property)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -140,6 +147,7 @@ await wtsqs.enqueueOne(myObj)
 Enqueue batch of payloads in the queue.
 
 **Kind**: instance method of [<code>WTSQS</code>](#WTSQS)  
+**See**: [SQS#sendMessageBatch](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#sendMessageBatch-property)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -193,6 +201,7 @@ Retrieve batch of messages without deleting them.
 
 **Kind**: instance method of [<code>WTSQS</code>](#WTSQS)  
 **Returns**: <code>Promise.&lt;Array.&lt;Message&gt;&gt;</code> - Array of retrieved messages.  
+**See**: [SQS#receiveMessage](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#receiveMessage-property)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -231,6 +240,7 @@ console.log(myMessageList)
 Delete single message from queue.
 
 **Kind**: instance method of [<code>WTSQS</code>](#WTSQS)  
+**See**: [SQS#deleteMessage](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#deleteMessage-property)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -250,6 +260,7 @@ await wtsqs.deleteOne(myMessage)
 Delete batch of messages from queue.
 
 **Kind**: instance method of [<code>WTSQS</code>](#WTSQS)  
+**See**: [SQS#deleteMessageBatch](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#deleteMessageBatch-property)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -259,6 +270,22 @@ Delete batch of messages from queue.
 ```js
 const myMessageList = await wtsqs.peekMany(2)
 await wtsqs.deleteMany(myMessageList)
+```
+
+* * *
+
+<a name="WTSQS+deleteAll"></a>
+
+### wtsqs.deleteAll() ⇒ <code>Promise</code>
+Delete ALL messages in the queue.
+
+NOTE: Can only be called once every 60 seconds.
+
+**Kind**: instance method of [<code>WTSQS</code>](#WTSQS)  
+**See**: [SQS#purgeQueue](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SQS.html#purgeQueue-property)  
+**Example**  
+```js
+await wtsqs.deleteAll()
 ```
 
 * * *
