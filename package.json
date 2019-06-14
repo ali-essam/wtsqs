@@ -37,7 +37,7 @@
     "coveralls": "^3.0.4",
     "dirty-chai": "^2.0.1",
     "jsdoc-to-markdown": "^5.0.0",
-    "mocha": "^5.0.0",
+    "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^14.1.1",
     "sleep-promise": "^2.0.0",
