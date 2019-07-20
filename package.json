@@ -1,6 +1,6 @@
 {
   "name": "wtsqs",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "AWS SQS Worker Wrapper",
   "main": "lib/index.js",
   "scripts": {
