@@ -52,6 +52,10 @@ describe('WTSQS', () => {
       }
     })
 
+    it('should accept empty list of messages', async () => {
+      await wtsqs.enqueueMany([])
+    })
+
     it('should increase queue size by enqueued count', async function () {
       await sleep(1000)
       const sizeBefore = await wtsqs.size()
