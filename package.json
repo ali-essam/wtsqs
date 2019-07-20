@@ -15,6 +15,9 @@
     "node": ">=7.0.0"
   },
   "repository": "https://github.com/ali-essam/wtsqs.git",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "author": "Ali Essam <ali.essam.arafa@gmail.com>",
   "license": "MIT",
   "private": false,
