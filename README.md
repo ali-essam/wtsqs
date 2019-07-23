@@ -82,8 +82,8 @@ Constructs WTSQS object.
 | --- | --- | --- | --- |
 | options | <code>Object</code> |  | Options object. |
 | options.url | <code>String</code> |  | SQS queue url. |
-| options.accessKeyId | <code>String</code> |  | AWS access key id. |
-| options.secretAccessKey | <code>String</code> |  | AWS secret access key. |
+| [options.accessKeyId] | <code>String</code> |  | AWS access key id. |
+| [options.secretAccessKey] | <code>String</code> |  | AWS secret access key. |
 | [options.region] | <code>String</code> | <code>us-east-1</code> | AWS regions where queue exists. |
 | [options.defaultMessageGroupId] | <code>String</code> |  | FIFO queues only. Default tag assigned to a message that specifies it belongs to a specific message group. If not provided random uuid is assigned to each message which doesn't guarantee order but allows parallelism. |
 | [options.defaultVisibilityTimeout] | <code>Integer</code> | <code>60</code> | Default duration (in seconds) that the received messages are hidden from subsequent retrieve requests. |
