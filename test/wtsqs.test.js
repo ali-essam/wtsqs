@@ -8,11 +8,49 @@ const sleep = require('sleep-promise')
 const { WTSQS } = require('../')
 
 describe('WTSQS', () => {
-  const wtsqs = new WTSQS({
-    url: process.env.AWS_SQS_URL,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    defaultPollWaitTime: 1
+  let wtsqs
+
+  beforeEach('WTSQS:default', () => {
+    wtsqs = new WTSQS({
+      url: process.env.AWS_SQS_URL,
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      defaultPollWaitTime: 1
+    })
+  })
+
+  describe('#constructor()', async () => {
+    it('should fail if url is not supplied', async () => {
+      try {
+        new WTSQS({ // eslint-disable-line no-new
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+        })
+        throw new Error('no error thrown')
+      } catch (err) {
+        expect(err.name).to.equal('InvalidArgument')
+      }
+    })
+
+    it('should allow no accessKeyId and secretAccessKey', async () => {
+      new WTSQS({ // eslint-disable-line no-new
+        url: process.env.AWS_SQS_URL
+      })
+    })
+
+    it('should auto detect non fifo queues', async () => {
+      const _wtsqs = new WTSQS({
+        url: 'https://sqs.us-east-1.amazonaws.com/123/test'
+      })
+      expect(_wtsqs.isFIFO).to.be.false()
+    })
+
+    it('should auto detect fifo queues', async () => {
+      const _wtsqs = new WTSQS({
+        url: 'https://sqs.us-east-1.amazonaws.com/123/test.fifo'
+      })
+      expect(_wtsqs.isFIFO).to.be.true()
+    })
   })
 
   describe('#size()', () => {
